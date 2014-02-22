@@ -57,6 +57,9 @@ set -e fish_function_path[1]
 
 # Add all functions
 set fish_function_path $fish_path/functions/ $fish_function_path
+for function in $fish_custom/plugins/*.fish
+  . $function
+end
 
 # Add all defined plugins
 for plugin in $fish_plugins
@@ -75,3 +78,6 @@ end
 
 # Re-adding user's functions so they have the highest priority
 set fish_function_path $user_function_path $fish_function_path
+
+set SCALA_HOME $HOME/dev/scala
+set PATH $SCALA_HOME/bin $PATH
